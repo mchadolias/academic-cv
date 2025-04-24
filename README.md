@@ -24,4 +24,20 @@ The project is organized into the following main files:
 
 ```
 
+## How to use the project
+
+### 1st method: Local compilation
+
+Prerequisites for this method, is 'pdflatex' and 'texlive-full'. The steps to compile your LaTeX document is the following:
+
+```
+pdflatex main.tex
+biber main.text
+pdflatex main.tex
+```
+
+### 2nd method: Through overleaf integration
+
+Prerequisites for this method is subscription to Overleaf Pro. You can sync a Github project with Overleaf and recompile it through there.
+
 --------
