@@ -40,4 +40,8 @@ pdflatex main.tex
 
 Prerequisites for this method is subscription to Overleaf Pro. You can sync a Github project with Overleaf and recompile it through there.
 
+### 3rd method: Compilation with a worklow in Github Actions
+
+A Github workflow has been implemented to compile the documents through already implemented Github Actions.
+
 --------

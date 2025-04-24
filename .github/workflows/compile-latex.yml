@@ -1,0 +1,31 @@
+name: Compile LaTeX Document
+
+on:
+  push:
+  pull_request:
+
+  workflow_dispatch:
+
+
+jobs:
+    compile:
+        runs-on: ubuntu-latest
+    
+        steps:
+            - name: Get current date
+              id: date
+              run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up TeX Live
+              uses: xu-cheng/latex-action@v2
+              with:
+                root_file: main.tex
+            
+            - name: Upload PDF
+              uses: softprops/action-gh-release@v2
+              with:
+                tag_name: ${{ env.NOW }}
+                files: ./main.pdf
