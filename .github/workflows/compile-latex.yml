@@ -26,9 +26,7 @@ jobs:
                 root_file: main.tex
             
             - name: Upload PDF
-              uses: softprops/action-gh-release@v2
+              uses: actions/upload-artifact@v3
               with:
-                tag_name: ${{ env.NOW }}
-                files: ./main.pdf
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  name: document-${{ env.NOW }}.pdf
+                  path: main.pdf
