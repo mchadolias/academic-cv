@@ -26,7 +26,7 @@ jobs:
                 root_file: main.tex
             
             - name: Upload PDF
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
-                  name: document-${{ env.NOW }}.pdf
-                  path: main.pdf
+                name: document-${{ env.NOW }}.pdf
+                path: main.pdf
