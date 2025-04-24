@@ -1,0 +1,33 @@
+name: Build and Release CV
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger only on version tags
+
+permissions:
+  contents: write  # Needed for creating releases
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+
+      - name: Rename output PDF
+        run: mv main.pdf academic-cv-version-${{ github.ref_name }}.pdf
+
+      - name: Create GitHub Release and Upload PDF
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: academic-cv-version-${{ github.ref_name }}.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
